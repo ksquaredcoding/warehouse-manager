@@ -1,3 +1,4 @@
+// #region DATA
 let missingPackage = ''
 let currentPackages = 'all'
 const packages = [{
@@ -54,8 +55,51 @@ const packages = [{
   to: 'Tae Lien',
   trackingNumber: 'suz2367',
   potentialMissing: true
-}]
+},
+{
+  priorityLevel: 'free',
+  isFragile: false,
+  weight: 2,
+  to: 'Some Guy',
+  trackingNumber: 'gx382b4',
+  potentialMissing: true
+},
+{
+  priorityLevel: 'standard',
+  isFragile: true,
+  weight: 17,
+  to: 'Tim Timmerson',
+  trackingNumber: 'gwl6591',
+  potentialMissing: true
+},
+{
+  priorityLevel: 'express',
+  isFragile: false,
+  weight: 3,
+  to: 'Anonymous',
+  trackingNumber: 'dft5667',
+  potentialMissing: true
+},
+{
+  priorityLevel: 'standard',
+  isFragile: false,
+  weight: 6,
+  to: 'My Angel',
+  trackingNumber: 'ma3882d',
+  potentialMissing: true
+},
+{
+  priorityLevel: 'free',
+  isFragile: true,
+  weight: 4,
+  to: 'Numbuh 4',
+  trackingNumber: 'bmn8287',
+  potentialMissing: true
+},
+]
+// #endregion
 
+// #region DRAWING BOXES
 function drawPackages(arr) {
   let packageButtons = document.getElementById('package-buttons')
   let template = ''
@@ -89,13 +133,13 @@ function fragileFilter() {
   currentPackages = 'fragile'
   drawPackages(fragilePackages)
 }
-
+// #endregion
 function getRandomPackage() {
   let randomIndex = Math.floor(Math.random() * packages.length)
   let missing = packages[randomIndex]
   missingPackage = missing.to
 }
-
+// #region LOGIC
 function guessPackage(rec) {
   if (!missingPackage) { return }
 
@@ -130,6 +174,6 @@ function resetGame() {
   getRandomPackage()
   drawPackages(packages)
 }
-
+// #endregion
 getRandomPackage()
 drawPackages(packages)
